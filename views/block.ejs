@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name = "apple-mobile-web-app-capable" content="yes"/>
+    <meta http-equiv="pragma" content="no-cache"/> 
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/> 
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="viewport" content="user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1,target-densitydpi=device-dpi" />
+	<link rel="apple-touch-icon" href="images/Icon.png" />
+	<link rel="shortcut icon" href="images/Icon.png">
+     
+	<style>
+		.tab{margin-left:10px;}
+		.tab-2{margin-left:20px;}
+	</style>
+
+
+
+	<title>BitcoinDark Simple Information</title>
+  </head>
+  <body>
+<%
+		function timeConverter(UNIX_timestamp){
+	 var a = new Date(UNIX_timestamp*1000);
+	 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+     var year = a.getFullYear();
+     var month = months[a.getMonth()];
+     var date = a.getDate();
+     var hour = a.getHours();
+     var min = a.getMinutes();
+     var sec = a.getSeconds();
+	 
+	 var ampm = "am";
+	 
+	 if (hour > 12){
+		hour -= 12;
+		ampm = "pm";
+	 }
+	 
+     var time = month + ' ' + date + ', ' + year + ' ' + hour + ':' + min + ':' + sec + ' ' + ampm ;
+     return time;
+ }
+
+%>
+  
+		<span><h2>BitcoinDark - Simple Information Server</h2></span>
+		<div>
+			<span><h4>Block Information</h4></span>
+			<span>Block Number: <%= height %></span><br /><br />
+			<span>Block Hash: <%= hash %></span><br /><br />
+			<span>Proof of Work/Stake: <%= flags %></span><br />
+			<span>Confirmations: <%= confirmations %></span><br />
+			<span>Transactions:</span><br />
+			<ul>
+			<% for(var i=0; i<tx.length; i++) { %>
+			<li>	<span class="tab"><%= tx[i] %></span></li>
+			<% } %>
+			</ul>
+			
+			</div>
+		</div>
+  </body>
+</html>

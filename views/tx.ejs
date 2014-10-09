@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name = "apple-mobile-web-app-capable" content="yes"/>
+    <meta http-equiv="pragma" content="no-cache"/> 
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/> 
+    <meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="viewport" content="user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1,target-densitydpi=device-dpi" />
+	<link rel="apple-touch-icon" href="images/Icon.png" />
+	<link rel="shortcut icon" href="images/Icon.png">
+     
+	<style>
+		.tab{margin-left:10px;}
+		.tab-2{margin-left:20px;}
+	</style>
+
+
+
+	<title>BitcoinDark Simple Information</title>
+  </head>
+  <body>
+<%
+		function timeConverter(UNIX_timestamp){
+	 var a = new Date(UNIX_timestamp*1000);
+	 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+     var year = a.getFullYear();
+     var month = months[a.getMonth()];
+     var date = a.getDate();
+     var hour = a.getHours();
+     var min = a.getMinutes();
+     var sec = a.getSeconds();
+	 
+	 var ampm = "am";
+	 
+	 if (hour > 12){
+		hour -= 12;
+		ampm = "pm";
+	 }
+	 
+     var time = month + ' ' + date + ', ' + year + ' ' + hour + ':' + min + ':' + sec + ' ' + ampm ;
+     return time;
+ }
+
+%>
+  
+		<span><h2>BitcoinDark - Simple Information Server</h2></span>
+		<div>
+			<span><h4>Transaction Information</h4></span>
+			<span>Transaction ID: <%= txid %></span><br /><br />
+			<span>In Block: <%= blockhash %></span><br /><br />
+			<span>Time: <%= time %> (<%= timeConverter(time) %>)</span><br />
+			<span>Confirmations: <%= confirmations %></span><br />
+			<span>Number of Transactions: <%= vout.length %></span><br /><br />
+			<div>
+
+			<% for(var i=0; i<vout.length; i++) { %>
+				
+					<span>Transaction <%= i+1 %>:</span><br />
+					<span class="tab">Value: <%= vout[i].value %></span><br />
+					
+					<span class="tab">Output Addresses:</span><br />
+		<% if(vout[i].scriptPubKey.addresses){ %>				
+		<% for(var j=0; j<vout[i].scriptPubKey.addresses.length; j++) { %>
+							<span class="tab-2"><%= vout[i].scriptPubKey.addresses[j] %></span><br />
+						<% } %> <br /><p />
+				<% } %>
+				<% } %>
+			
+			</div>
+		</div>
+  </body>
+</html>

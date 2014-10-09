@@ -1,0 +1,48 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/bin/npm', 'install', 'supervisor', '-g' ]
+info using npm@1.1.4
+info using node@v0.6.12
+verbose config file /root/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+silly exec /usr/bin/node "/usr/share/npm/bin/npm-get-uid-gid.js" "nobody" 0
+silly spawning [ '/usr/bin/node',
+silly spawning   [ '/usr/share/npm/bin/npm-get-uid-gid.js', 'nobody', 0 ],
+silly spawning   null ]
+silly output from getuid/gid {"uid":65534,"gid":0}
+silly output from getuid/gid 
+verbose cache add [ 'supervisor', null ]
+silly cache add: name, spec, args [ undefined, 'supervisor', [ 'supervisor', null ] ]
+verbose parsed url { pathname: 'supervisor',
+verbose parsed url   path: 'supervisor',
+verbose parsed url   href: 'supervisor' }
+verbose addNamed [ 'supervisor', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'supervisor', '', false ]
+verbose raw, before any munging supervisor
+verbose url resolving [ 'https://registry.npmjs.org/', './supervisor' ]
+verbose url resolved https://registry.npmjs.org/supervisor
+http GET https://registry.npmjs.org/supervisor
+ERR! Error: failed to fetch from registry: supervisor
+ERR!     at /usr/share/npm/lib/utils/npm-registry-client/get.js:139:12
+ERR!     at cb (/usr/share/npm/lib/utils/npm-registry-client/request.js:31:9)
+ERR!     at Request._callback (/usr/share/npm/lib/utils/npm-registry-client/request.js:136:18)
+ERR!     at Request.callback (/usr/lib/nodejs/request/main.js:119:22)
+ERR!     at Request.<anonymous> (/usr/lib/nodejs/request/main.js:212:58)
+ERR!     at Request.emit (events.js:88:20)
+ERR!     at ClientRequest.<anonymous> (/usr/lib/nodejs/request/main.js:412:12)
+ERR!     at ClientRequest.emit (events.js:67:17)
+ERR!     at HTTPParser.onIncoming (http.js:1261:11)
+ERR!     at HTTPParser.onHeadersComplete (http.js:102:31)
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /root/btcd-simpleexplorer/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.8.0-29-generic
+ERR! command "node" "/usr/bin/npm" "install" "supervisor" "-g"
+ERR! cwd /root/btcd-simpleexplorer
+ERR! node -v v0.6.12
+ERR! npm -v 1.1.4
+ERR! message failed to fetch from registry: supervisor
+verbose exit [ 1, true ]
